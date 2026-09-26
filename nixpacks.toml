@@ -1,0 +1,15 @@
+# Nixpacks configuration for Railway
+# Force Node.js 22 (LTS) - Node 18 has reached EOL
+
+[phases.setup]
+nixpkgs = ["nodejs_22"]
+aptPkgs = []
+
+[phases.install]
+cmds = ["npm install --legacy-peer-deps || bun install"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "node server.js"
